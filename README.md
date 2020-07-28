@@ -1,4 +1,4 @@
-# Example GraphQL with Django
+# Django and GraphQL
 
 This application has queries and mutations of Star Wars.
 
@@ -11,8 +11,8 @@ This application has queries and mutations of Star Wars.
 4.  Execute the run.py file with `python manage.py migrate`
 5.  Execute the fixtures.sh file with `sh fixtures.sh`
 6.  Execute the run.py file with `python manage.py runserver`
-7.  Open the browser and go to the address <http://localhost:8000/>
-    or <http://127.0.0.1:8000/>
+7.  Open the browser and go to the address <http://localhost:8000/graphql/>
+    or <http://127.0.0.1:8000/graphql/>
 
 ---
 
@@ -164,6 +164,29 @@ mutation{
   }
 }
 ```
+
+
+## Create token
+```
+mutation{
+  tokenAuth(username:"jairnet", password:"12345678")
+  {
+    token
+  }
+}
+```
+
+
+## verify token
+```
+mutation{
+  verifyToken(token:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphaXJuZXQiLCJleHAiOjE1OTU5MDcxOTYsIm9yaWdJYXQiOjE1OTU5MDY4OTZ9.xWXtZ10ENBVdZ2vD2VEfELU-am9PEEmdsNvmFmmtGBI")
+  {
+    payload
+  }
+}
+```
+
 
 ## Create planet
 ```

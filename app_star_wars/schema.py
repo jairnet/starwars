@@ -5,15 +5,14 @@ from graphene.relay import Node
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
-
 from app_star_wars.models import Planet, People, Film
 from app_star_wars.objects import PlanetNode, PeopleNode,FilmNode
 from .mutations.create import CreateUser, CreatePlanet, CreatePeople, CreateFilm
 
-
 # Define query's and mutation's
 
-class Query(graphene.ObjectType):
+
+class Query(ObjectType):
     planet = relay.Node.Field(PlanetNode)
     all_planets = DjangoFilterConnectionField(PlanetNode)
 

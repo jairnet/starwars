@@ -113,7 +113,7 @@ class Species(DateTimeModel):
 
 
 class Film(DateTimeModel):
-    """ A film i.e. The Empire Strikes Back (which is also the best film) asasasasasasasas"""
+    """ A film i.e. The Empire Strikes Back (which is also the best film) """
 
     title = models.CharField(max_length=100)
     episode_id = models.IntegerField()
