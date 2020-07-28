@@ -53,6 +53,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Config access token and refresh
+# https://pypi.org/project/django-graphql-jwt/
+
 GRAPHENE = {
     'SCHEMA': 'star_wars.star_wars.schema',
     'MIDDLEWARE': [
