@@ -5,19 +5,14 @@ This application has queries and mutations of Star Wars.
 ## Steps required to start the application
 
 1.  It is recommended to use **Python 3.4** or higher
-2.  Install the packages contained in **requirements.txt** using the command    installation of `pip install -r requirements.txt`
+2.  Install the packages contained in **requirements.txt** using the command
+    installation of `pip install -r requirements.txt`
 3.  Execute the run.py file with `python manage.py makemigrations`
 4.  Execute the run.py file with `python manage.py migrate`
-5.  Execute the run.py file with `python manage.py runserver`
-6.  For load data fixtures execute:
-    python ./manage.py loaddata planets
-    python ./manage.py loaddata people
-    python ./manage.py loaddata transport
-    python ./manage.py loaddata starships
-    python ./manage.py loaddata vehicles
-    python ./manage.py loaddata species
-    python ./manage.py loaddata films
-7.  Open the browser and go to the address <http://localhost:8000/> or <http://127.0.0.1:8000/>
+5.  Execute the fixtures.sh file with `sh fixtures.sh`
+6.  Execute the run.py file with `python manage.py runserver`
+7.  Open the browser and go to the address <http://localhost:8000/>
+    or <http://127.0.0.1:8000/>
 
 ---
 
@@ -147,6 +142,23 @@ query {
         
       }
     }
+  }
+}
+```
+
+## Mutation: Create user
+```
+mutation{
+  createUser(
+    username: "jairnet",
+    email: "jair@correo.com",
+    password:"12345678")
+    {
+      user{
+        id
+        username
+        email
+      }
   }
 }
 ```

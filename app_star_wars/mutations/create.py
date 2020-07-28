@@ -1,6 +1,9 @@
+from django.contrib.auth import get_user_model
+
 from graphene import Field
 from graphene import String
 from graphene import Mutation
+from graphene_django.types import DjangoObjectType
 
 from app_star_wars.models import Planet, People, Film
 from app_star_wars.inputs import CreatePlanetInput, CreatePeopleInput, CreateFilmInput
@@ -8,6 +11,30 @@ from app_star_wars.utils import transform_global_ids
 from app_star_wars.utils import delete_attributes_none
 from app_star_wars.objects import PlanetNode, PeopleNode, FilmNode
 
+
+class UserType(DjangoObjectType):
+    class Meta:
+        model = get_user_model()
+
+
+class CreateUser(Mutation):
+    user = Field(UserType)
+
+    class Arguments:
+        username = String(required=True)
+        password = String(required=True)
+        email = String(required=True)
+
+    def mutate(self, info, username, password, email):
+        user = get_user_model()(
+            username=username,
+            email=email,
+        )
+        user.set_password(password)
+        user.save()
+
+        return CreateUser(user=user)
+    
 
 class CreatePlanet(Mutation):
     planet = Field(PlanetNode)
