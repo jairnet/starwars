@@ -146,7 +146,9 @@ query {
 }
 ```
 
-## Mutation: Create user
+# Mutations
+
+## Create user
 ```
 mutation{
   createUser(
@@ -163,7 +165,7 @@ mutation{
 }
 ```
 
-## Mutation: Create planet
+## Create planet
 ```
 mutation {
   createPlanet(input: {

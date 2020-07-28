@@ -1,6 +1,5 @@
 import graphene
-# import links.schema
-# import users.schema
+import graphql_jwt
 from graphene import relay, ObjectType
 from graphene.relay import Node
 from graphene_django import DjangoObjectType
@@ -26,6 +25,10 @@ class Query(graphene.ObjectType):
 
 
 class Mutation(ObjectType):
+    token_auth = graphql_jwt.ObtainJSONWebToken.Field()
+    verify_token = graphql_jwt.Verify.Field()
+    refresh_token = graphql_jwt.Refresh.Field()
+
     create_user = CreateUser.Field()
     create_planet = CreatePlanet.Field()
     create_people = CreatePeople.Field()
